@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View,StatusBar } from 'react-native';
+import InshortTab from './components/InshortTab';
+import Context from './API/Context';
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={{...styles.container,backgroundColor:'#282c35'}}>
       <StatusBar style="auto" />
-    </View>
+      <InshortTab />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop:StatusBar.currentHeight,
   },
 });
+
+export default () => {
+  return (
+  <Context>
+    <App />
+  </Context>
+  )
+};

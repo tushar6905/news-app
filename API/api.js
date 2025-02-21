@@ -70,21 +70,16 @@ export const categories = [
     {
       id: "cnn",
       name: "CNN",
-      pic: "https://bankimooncentre.org/wp-content/uploads/2020/06/cnn-logo-square.png",
+      pic: "https://play-lh.googleusercontent.com/375NW5yL8owK_hW9igW9sh-YJbda9ZcygpDXuVvK_R7l-yJp-fuhb4qvUw_FE4XW4ms",
     },
     {
       id: "fox-news",
       name: "Fox News",
       pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/768px-Fox_News_Channel_logo.svg.png",
     },
-    {
-      id: "google-news",
-      name: "Google News",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Google_News_icon.png",
-    },
   ];
   
-  export const BASE_URL = "https://saurav.tech/NewsAPI";
+  export const BASE_URL = "https://saurav.tech/NewsAPI/";
   
   export const getNewsAPI = (category, country = "in") => {
     return `${BASE_URL}/top-headlines/category/${category}/${country}.json`;

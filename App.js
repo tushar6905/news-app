@@ -1,10 +1,12 @@
 import { SafeAreaView, StyleSheet, Text, View,StatusBar } from 'react-native';
 import InshortTab from './components/InshortTab';
-import Context from './API/Context';
+import Context, { NewsContext } from './API/Context';
+import { useContext } from 'react';
 
 function App() {
+  const {darkTheme} =useContext(NewsContext)
   return (
-    <SafeAreaView style={{...styles.container,backgroundColor:'#282c35'}}>
+    <SafeAreaView style={{...styles.container,backgroundColor:darkTheme ? '#282c35':"white"}}>
       <StatusBar style="auto" />
       <InshortTab />
     </SafeAreaView>

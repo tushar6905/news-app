@@ -1,32 +1,34 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { AntDesign, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons'
+import { NewsContext } from '../API/Context'
 
 const TopNavigation = ({index,setIndex}) => {
+    const {fetchNews,darkTheme,setDarkTheme}=useContext(NewsContext)
   return (
-    <View style={{...styles.container,backgroundColor:'#282c35'}}>
+    <View style={{...styles.container,backgroundColor:darkTheme ? '#282c35':"white"}}>
         {
             index === 0 ?
             (
             <TouchableOpacity style={styles.left}> 
                 <Text style={{...styles.text,color:'lightgrey'}}>
-                <MaterialCommunityIcons name="theme-light-dark" size={24} color="#007fff" />
+                <MaterialCommunityIcons name="theme-light-dark" size={24} color="#007fff"  onPress={()=>setDarkTheme(!darkTheme)}/>
 
                 </Text>
                 </ TouchableOpacity>) : (
                     <TouchableOpacity style={styles.left} onPress={()=>setIndex(index ===0 ? 1:0) }> 
                         <SimpleLineIcons name='arrow-left' size={24} color='#007fff' />
-                        <Text style={{...styles.text,color:'lightgrey'}}>Discover</Text>
+                        <Text style={{...styles.text,color:darkTheme?'lightgrey':'black'}}>Discover</Text>
                     </TouchableOpacity>
                 )
         }
-        <Text style={{...styles.center,color:'white'}}>
+        <Text style={{...styles.center,color:darkTheme?'white':'black'}}>
             {index ? "All NEWS" : "Discover"}
         </Text>
         {
             index ? (
                 <TouchableOpacity style={styles.right} 
-                // onPress={()=> fetchNews('general')}
+                onPress={()=> fetchNews('general')}
                 >
                     <Text style={styles.test}>
                         <AntDesign name='reload1' size={24} color='#007fff' />
@@ -35,7 +37,7 @@ const TopNavigation = ({index,setIndex}) => {
             ):(
                 <TouchableOpacity style={styles.left} 
                 onPress={()=>setIndex(index ===0 ? 1:0) }>
-                    <Text style={{...styles.text,color:'white'}}>All NEWS</Text>
+                    <Text style={{...styles.text,color:darkTheme?'white':'black'}}>All NEWS</Text>
                     <SimpleLineIcons name='arrow-right' size={24} color='#007fff' />
                 </TouchableOpacity>
             )
